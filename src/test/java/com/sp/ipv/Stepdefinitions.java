@@ -61,22 +61,23 @@ public class Stepdefinitions {
 
     @When("^I select \"([^\"]*)\"$")
     public void i_select(String protocol) throws Throwable {
-        TestConf.getScreen().type(",", Key.META);
-        TestConf.getScreen().click(Images.PROTOCOL_SELECTOR);
-        switch (protocol.toLowerCase()) {
-            case "ikev2":
-                TestConf.getScreen().click(Images.IKEV2);
-            default:
-                break;
-        }
+        TEST_CONF.getScreen().type(",", Key.META);
+        TEST_CONF.getScreen().click(Images.PROTOCOL_SELECTOR);
+        TEST_CONF.getScreen().click(Images.IKEV2);
         TEST_CONF.getScreen().click(Images.CLOSEPREFERENCES);
-        TestConf.getScreen().click(Images.CONNECT);
-
+        TEST_CONF.getScreen().click(Images.QUICKCONNECT);
+        Thread.sleep(3000);
+        TEST_CONF.getScreen().click(Images.CONNECT);
+        TEST_CONF.getScreen().click(Images.ALLOW);
+        TEST_CONF.getScreen().type(Images.KEYPASSWORD, "vico2018");
+        TEST_CONF.getScreen().click(Images.OKBUTTON);
+        TEST_CONF.getScreen().type(Images.NEAGENT, "vico2018");
+        TEST_CONF.getScreen().click(Images.ALLOW);
     }
 
     @When("^attempt connection$")
     public void attempt_connection() throws Throwable {
-
+        Thread.sleep(4000);
     }
 
     @Then("^I should successfully connect$")

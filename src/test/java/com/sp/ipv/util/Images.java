@@ -14,5 +14,11 @@ public class Images {
     public static final String ACCOUNT = "src/test/resources/images/account.png";
     public static final String CONNECT = "src/test/resources/images/connect.png";
     public static final String CLOSEPREFERENCES = "src/test/resources/images/close_preferences.png";
+    public static final String ALWAYSALLOW = "src/test/resources/images/always_allow.png";
+    public static final String KEYPASSWORD = "src/test/resources/images/keychain_pswrd.png";
+    public static final String ALLOW = "src/test/resources/images/allow.png";
+    public static final String OKBUTTON = "src/test/resources/images/ok_button.png";
+    public static final String QUICKCONNECT = "src/test/resources/images/quick_connect.png";
+    public static final String NEAGENT = "src/test/resources/images/neagent.png";
 
 }
