@@ -8,6 +8,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.sikuli.script.FindFailed;
+import org.sikuli.script.Key;
 
 import java.awt.*;
 import java.io.File;
@@ -20,14 +21,15 @@ public class Stepdefinitions {
 
     @Before
     public void setUp() {
+        System.out.println(">>>>>" + TEST_CONF.getIpvUser());
         try {
             Desktop.getDesktop().open(new File(TestConf.getTestConf().getApplicationPath()));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        TEST_CONF.getScreen().type(Images.USERNAME, "austin.api.test");
-        TEST_CONF.getScreen().type(Images.PASSWORD, "test.api.austin");
+        TEST_CONF.getScreen().type(Images.USERNAME, TEST_CONF.getIpvUser());
+        TEST_CONF.getScreen().type(Images.PASSWORD, TEST_CONF.getIpvPassword());
         try {
             TEST_CONF.getScreen().click(Images.LOGINBUTTON);
         } catch (FindFailed findFailed) {
@@ -59,12 +61,17 @@ public class Stepdefinitions {
 
     @When("^I select \"([^\"]*)\"$")
     public void i_select(String protocol) throws Throwable {
-        /*switch (protocol.toLowerCase()) {
+        TestConf.getScreen().type(",", Key.META);
+        TestConf.getScreen().click(Images.PROTOCOL_SELECTOR);
+        switch (protocol.toLowerCase()) {
             case "ikev2":
-                screen.click(Images.IKEV2);
+                TestConf.getScreen().click(Images.IKEV2);
             default:
                 break;
-        }*/
+        }
+        TEST_CONF.getScreen().click(Images.CLOSEPREFERENCES);
+        TestConf.getScreen().click(Images.CONNECT);
+
     }
 
     @When("^attempt connection$")
@@ -83,6 +90,8 @@ public class Stepdefinitions {
             TEST_CONF.getScreen().click(Images.ACCOUNT);
             TEST_CONF.getScreen().click(Images.LOGOUTBUTTON);
             TEST_CONF.getScreen().click(Images.CONFIRM);
+            TEST_CONF.getScreen().click(Images.IPVMENU);
+            TEST_CONF.getScreen().click(Images.QUIT);
         } catch (FindFailed findFailed) {
             findFailed.printStackTrace();
         }

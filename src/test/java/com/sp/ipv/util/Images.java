@@ -12,5 +12,7 @@ public class Images {
     public static final String LOGOUTBUTTON = "src/test/resources/images/logout.png";
     public static final String CONFIRM = "src/test/resources/images/confirm.png";
     public static final String ACCOUNT = "src/test/resources/images/account.png";
+    public static final String CONNECT = "src/test/resources/images/connect.png";
+    public static final String CLOSEPREFERENCES = "src/test/resources/images/close_preferences.png";
 
 }

@@ -32,10 +32,13 @@ public class TestConf {
     @NotNull
     private String applicationPath;
 
+    @Valid
     @NotNull
-    public String getSearchUrl() {
-        return searchUrl;
-    }
+    private String ipvUser;
+
+    @Valid
+    @NotNull
+    private String ipvPassword;
 
     @NotNull
     public String getApplicationPath() {
@@ -48,6 +51,21 @@ public class TestConf {
 
     public static Screen getScreen() {
         return SCREEN;
+    }
+
+    @NotNull
+    public String getIpvUser() {
+        return ipvUser;
+    }
+
+    @NotNull
+    public String getSearchUrl() {
+        return searchUrl;
+    }
+
+    @NotNull
+    public String getIpvPassword() {
+        return ipvPassword;
     }
 
     private static ObjectMapper buildObjectMapper(){
