@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
+import org.sikuli.script.Screen;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,19 +21,33 @@ public class TestConf {
     private static final Validator VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
     private static final Logger LOG = LoggerFactory.getLogger(TestConf.class);
     private static final TestConf TEST_CONF = buildTestConfSingleton(BASE_CONFIG);
+    private static final Screen SCREEN = new Screen();
 
 
     @Valid
     @NotNull
     private String searchUrl;
 
+    @Valid
+    @NotNull
+    private String applicationPath;
+
     @NotNull
     public String getSearchUrl() {
         return searchUrl;
     }
 
+    @NotNull
+    public String getApplicationPath() {
+        return applicationPath;
+    }
+
     public static TestConf getTestConf() {
         return TEST_CONF;
+    }
+
+    public static Screen getScreen() {
+        return SCREEN;
     }
 
     private static ObjectMapper buildObjectMapper(){
